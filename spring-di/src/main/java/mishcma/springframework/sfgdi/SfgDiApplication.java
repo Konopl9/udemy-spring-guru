@@ -1,6 +1,7 @@
 package mishcma.springframework.sfgdi;
 
 import mishcma.springframework.sfgdi.controllers.ConstructorInjectedController;
+import mishcma.springframework.sfgdi.controllers.I18nController;
 import mishcma.springframework.sfgdi.controllers.MyController;
 import mishcma.springframework.sfgdi.controllers.PropertyInjectedController;
 import mishcma.springframework.sfgdi.controllers.SetterInjectedController;
@@ -13,6 +14,10 @@ public class SfgDiApplication {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+        I18nController i18Controller = (I18nController) ctx.getBean("i18nController");
+        System.out.println("----- Profile Bean");
+        System.out.println(i18Controller.sayHello());
 
         MyController myController = (MyController) ctx.getBean("myController");
         System.out.println("----- Primary Bean");
