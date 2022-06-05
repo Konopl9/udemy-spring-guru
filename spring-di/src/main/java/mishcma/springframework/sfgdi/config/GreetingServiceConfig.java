@@ -1,5 +1,7 @@
 package mishcma.springframework.sfgdi.config;
 
+import mishcma.springframework.sfgdi.repositories.EnglishGreetingRepository;
+import mishcma.springframework.sfgdi.repositories.EnglishGreetingRepositoryImpl;
 import mishcma.springframework.sfgdi.services.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,10 +17,15 @@ public class GreetingServiceConfig {
         return new I18SpanishGreetingService();
     }
 
+    @Bean
+    EnglishGreetingRepository englishGreetingRepository() {
+        return new EnglishGreetingRepositoryImpl();
+    }
+
     @Profile("EN")
     @Bean
-    I18EnglishGreetingService i18nService() {
-        return new I18EnglishGreetingService();
+    I18EnglishGreetingService i18nService(EnglishGreetingRepository englishGreetingRepository) {
+        return new I18EnglishGreetingService(englishGreetingRepository);
     }
 
     @Primary
