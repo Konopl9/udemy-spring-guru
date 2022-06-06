@@ -1,6 +1,7 @@
 package mishcma.springframework.sfgdi;
 
 import mishcma.springframework.sfgdi.config.SfgConfiguration;
+import mishcma.springframework.sfgdi.config.SfgConstructorConfig;
 import mishcma.springframework.sfgdi.controllers.*;
 import mishcma.springframework.sfgdi.datasource.FakeDataSource;
 import mishcma.springframework.sfgdi.services.PrototypeBean;
@@ -61,6 +62,12 @@ public class SfgDiApplication {
         System.out.println(sfgConfiguration.getUsername());
         System.out.println(sfgConfiguration.getPassword());
         System.out.println(sfgConfiguration.getJdbcurl());
+
+        System.out.println("------------- Constructor Binding");
+        SfgConstructorConfig sfgConstructorConfig = ctx.getBean(SfgConstructorConfig.class);
+        System.out.println(sfgConstructorConfig.getUsername());
+        System.out.println(sfgConstructorConfig.getPassword());
+        System.out.println(sfgConstructorConfig.getJdbcurl());
 
     }
 
