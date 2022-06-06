@@ -1,6 +1,8 @@
 package mishcma.springframework.sfgdi;
 
+import mishcma.springframework.sfgdi.config.SfgConfiguration;
 import mishcma.springframework.sfgdi.controllers.*;
+import mishcma.springframework.sfgdi.datasource.FakeDataSource;
 import mishcma.springframework.sfgdi.services.PrototypeBean;
 import mishcma.springframework.sfgdi.services.SingletonBean;
 import org.springframework.boot.SpringApplication;
@@ -48,10 +50,17 @@ public class SfgDiApplication {
         PrototypeBean prototypeBean2 = ctx.getBean(PrototypeBean.class);
         System.out.println(prototypeBean2.getMyScope());
 
+        System.out.println("--------- Fake Data Source");
         FakeDataSource fakeDataSource = ctx.getBean(FakeDataSource.class);
         System.out.println(fakeDataSource.getUsername());
         System.out.println(fakeDataSource.getPassword());
         System.out.println(fakeDataSource.getJdbcurl());
+
+        System.out.println("--------- Config Props Bean");
+        SfgConfiguration sfgConfiguration = ctx.getBean(SfgConfiguration.class);
+        System.out.println(sfgConfiguration.getUsername());
+        System.out.println(sfgConfiguration.getPassword());
+        System.out.println(sfgConfiguration.getJdbcurl());
 
     }
 
