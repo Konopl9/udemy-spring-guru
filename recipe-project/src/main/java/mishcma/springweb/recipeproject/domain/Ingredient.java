@@ -2,10 +2,12 @@ package mishcma.springweb.recipeproject.domain;
 
 import java.math.BigDecimal;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Ingredient {
@@ -16,9 +18,11 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    // private UbitOfMeasure uom;
     @ManyToOne
     private Recipe recipe;
+
+    @OneToOne(fetch = FetchType.EAGER)
+    private UnitOfMeasure unitOfMeasure;
 
     public Long getId() {
         return id;
@@ -50,5 +54,13 @@ public class Ingredient {
 
     public void setRecipe(Recipe recipe) {
         this.recipe = recipe;
+    }
+
+    public UnitOfMeasure getUnitOfMeasure() {
+        return unitOfMeasure;
+    }
+
+    public void setUnitOfMeasure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 }
