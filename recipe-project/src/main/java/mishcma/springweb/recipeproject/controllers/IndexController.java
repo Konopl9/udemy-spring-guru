@@ -3,33 +3,25 @@ package mishcma.springweb.recipeproject.controllers;
 import java.util.Optional;
 import mishcma.springweb.recipeproject.domain.Category;
 import mishcma.springweb.recipeproject.domain.UnitOfMeasure;
-import mishcma.springweb.recipeproject.repositories.CategoryRepository;
-import mishcma.springweb.recipeproject.repositories.UnitOfMeasureRepository;
+import mishcma.springweb.recipeproject.service.RecipeService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class IndexController {
 
-    private CategoryRepository categoryRepository;
-    private UnitOfMeasureRepository unitOfMeasureRepository;
+    private final RecipeService recipeService;
 
-    public IndexController(
-        CategoryRepository categoryRepository,
-        UnitOfMeasureRepository unitOfMeasureRepository) {
-        this.categoryRepository = categoryRepository;
-        this.unitOfMeasureRepository = unitOfMeasureRepository;
+    public IndexController(RecipeService recipeService) {
+
+        this.recipeService = recipeService;
     }
 
     @RequestMapping({"", "/", "/index"})
-    public String getIndexPage() {
+    public String getIndexPage(Model model) {
+        model.addAttribute("recipes", recipeService.getRecipes());
 
-        Optional<Category> categoryOptional = categoryRepository.findByDescription("American");
-
-        Optional<UnitOfMeasure> unitOfMeasure = unitOfMeasureRepository.findByDescription("Teaspoon");
-
-        System.out.println("Cat id is: " + categoryOptional.get().getId());
-        System.out.println("UOM id is: " + unitOfMeasure.get().getId());
         return "index";
     }
 }
