@@ -76,7 +76,7 @@ public class RecipeControllerTest {
 //                .param("description", "some string")
             )
             .andExpect(status().is3xxRedirection())
-            .andExpect(view().name("redirect:/recipe/2/show"));
+            .andExpect(view().name("redirect:/recipe/show/2"));
     }
 
     @Test
@@ -94,9 +94,9 @@ public class RecipeControllerTest {
 
     @Test
     public void testDelete() throws Exception {
-        mockMvc.perform(get("/recipe/1/1delete"))
+        mockMvc.perform(get("/recipe/1/delete"))
             .andExpect(status().is3xxRedirection())
-            .andExpect(view().name("/redirect:/"));
+            .andExpect(view().name("redirect:/"));
 
         verify(recipeService, times(1)).deleteById(anyLong());
     }
