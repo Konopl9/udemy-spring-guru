@@ -8,6 +8,7 @@ import mishcma.springweb.recipeproject.commands.RecipeCommand;
 import mishcma.springweb.recipeproject.converters.RecipeCommandToRecipe;
 import mishcma.springweb.recipeproject.converters.RecipeToRecipeCommand;
 import mishcma.springweb.recipeproject.domain.Recipe;
+import mishcma.springweb.recipeproject.exceptions.NotFoundException;
 import mishcma.springweb.recipeproject.repositories.RecipeRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,7 +42,8 @@ public class RecipeServiceImpl implements RecipeService {
         Optional<Recipe> recipeOptional = recipeRepository.findById(id);
 
         if (!recipeOptional.isPresent()) {
-            throw new RuntimeException("Recipe Not Found!");
+            //throw new RuntimeException("Recipe Not Found!");
+            throw new NotFoundException("Recipe Not Found");
         }
 
         return recipeOptional.get();
