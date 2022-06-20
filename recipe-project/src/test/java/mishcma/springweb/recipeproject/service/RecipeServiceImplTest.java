@@ -14,12 +14,12 @@ import java.util.Set;
 import mishcma.springweb.recipeproject.converters.RecipeCommandToRecipe;
 import mishcma.springweb.recipeproject.converters.RecipeToRecipeCommand;
 import mishcma.springweb.recipeproject.domain.Recipe;
+import mishcma.springweb.recipeproject.exceptions.NotFoundException;
 import mishcma.springweb.recipeproject.repositories.RecipeRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 
 public class RecipeServiceImplTest {
 
