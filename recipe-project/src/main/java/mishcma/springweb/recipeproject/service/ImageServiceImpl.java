@@ -8,9 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-/**
- * Created by jt on 7/3/17.
- */
 @Slf4j
 @Service
 public class ImageServiceImpl implements ImageService {

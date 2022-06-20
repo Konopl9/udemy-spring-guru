@@ -15,9 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * Created by jt on 6/28/17.
- */
+
 @Slf4j
 @Controller
 public class IngredientController {
